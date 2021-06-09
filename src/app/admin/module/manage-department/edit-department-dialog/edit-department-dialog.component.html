@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='editDepartmentForm'>
+
+            <div class="info__widget">
+                <p>Mã Trung Tâm:</p>
+                <input formControlName=id type="number"  placeholder="Mã Trung tâm...">
+            </div>
+
+            <div class="info__widget">
+                <p>Tên Trung Tâm:</p>
+                <input formControlName='name' type="text"  placeholder="Tên Trung Tâm...">
+                <div *ngIf="editDepartmentForm.get('name')?.invalid && (editDepartmentForm.get('name')?.dirty || editDepartmentForm.get('name')?.touched)" class="alert">
+                    Vui Lòng Nhập Tên Trung Tâm!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Thành Phố:</p>
+                <input formControlName='city' type="text" placeholder="Thành Phố...">
+                <div *ngIf="editDepartmentForm.get('city')?.invalid && (editDepartmentForm.get('city')?.dirty || editDepartmentForm.get('city')?.touched)" class="alert">
+                    Vui Lòng Nhập Thành Phố!
+                </div>
+            </div>
+    
+            <div class="info__widget">
+                <p>Địa Chỉ:</p>
+                <input formControlName='address' type="text" placeholder="Địa Chỉ...">
+                <div *ngIf="editDepartmentForm.get('address')?.invalid && (editDepartmentForm.get('address')?.dirty || editDepartmentForm.get('address')?.touched)" class="alert">
+                    Vui Lòng Nhập Địa Chỉ!
+                </div>
+            </div>
+    
+            <div class="info__widget" style="height: 250px;" >
+                <p>Thông Tin Trung Tâm:</p>
+                <textarea style="height: 230px;" rows="5" cols="100" formControlName='detail' type="text" placeholder="Thông Tin Trung Tâm..."></textarea>
+                <div *ngIf="editDepartmentForm.get('detail')?.invalid && (editDepartmentForm.get('detail')?.dirty || editDepartmentForm.get('detail')?.touched)" class="alert">
+                    Vui Lòng Nhập Thông Tin Trung Tâm!
+                </div>
+            </div>   
+            
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" [disabled]='editDepartmentForm.invalid' (click)=confirm(editDepartmentForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner color='primary' diameter=30 strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>

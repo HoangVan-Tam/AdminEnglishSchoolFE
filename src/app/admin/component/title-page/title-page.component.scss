@@ -1,0 +1,21 @@
+.title__container{
+    width: 100%;
+    box-shadow: 1px 1px 2px 2px grey;
+    border-radius: 5px;  
+    background-color: transparent;
+}
+.title{
+    border-radius: 5px;
+    width: 100%;
+    color: #232637;
+    border: 1px solid grey;
+}
+.title h3{
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 60px;
+    font-size: 3.5rem;
+}

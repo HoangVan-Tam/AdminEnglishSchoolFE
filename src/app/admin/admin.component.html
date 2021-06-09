@@ -1,0 +1,25 @@
+<div class="flex">
+    <app-menu></app-menu>
+    <div class="container">
+        <div class="information">
+            <ul class="menu-parent"> 
+                <li class="sub-menu-parent">
+                    <div style="text-align: center; font-size: 1.7rem;"> 
+                            Hello!
+                            <i style="text-decoration: underline;">{{lastName}} {{firstName}}</i>
+                            <i class="fas fa-user" style="margin-left: 5px;"></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li class="sub-item" (click)="OpenAddEmployeeDialog()">Thêm Nhân Viên<i class="fas fa-plus-square"></i></li>
+                        <li class="sub-item" (click)="ChangePasswordialog()">Đổi Mật Khẩu <i class="fas fa-key"></i></li>
+                        <li class="sub-item" (click)='ClearToken()'><a href="" >Đăng Xuất<i class="fas fa-sign-out-alt"></i></a></li>    
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+ 
+

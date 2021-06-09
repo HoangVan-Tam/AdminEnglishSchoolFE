@@ -1,0 +1,162 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='editCourseForm'>
+
+            <div class="info__widget">
+                <p>Mã Khóa Học:</p>
+                <input formControlName=id type="number"  placeholder="Nhập Câu Hỏi...">
+            </div>
+
+            <div class="info__widget">
+                <p>Tên Khóa Học:</p>
+                <input formControlName=name type="text"  placeholder="Nhập Tên Khóa Học...">
+                <div *ngIf="editCourseForm.get('name')?.invalid && (editCourseForm.get('name')?.dirty || editCourseForm.get('name')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Tên Khóa Học!
+                </div>
+            </div>
+            
+            <div class="info__widget">
+                <p>Tiêu Đề:</p>
+                <input formControlName=title type="text"  placeholder="Nhập Tiêu Đề...">
+                <div *ngIf="editCourseForm.get('title')?.invalid && (editCourseForm.get('title')?.dirty || editCourseForm.get('title')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Tiêu Đề Khóa Học!
+                </div>
+            </div>
+            <div class="info__widget" style="height: 300px;">
+                <p>Giới Thiệu:</p>
+                <textarea formControlName=headContent type="text"  placeholder="Nhập Giới Thiệu Khóa Học..."></textarea>
+                <div *ngIf="editCourseForm.get('headContent')?.invalid && (editCourseForm.get('headContent')?.dirty || editCourseForm.get('headContent')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Giới Thiệu Khóa Học!
+                </div>
+            </div>
+            <div class="info__widget" style="height: 300px;">
+                <p>Chi Tiết:</p>
+                <textarea formControlName=bodyContent type="text"  placeholder="Nhập Chi Tiết Khóa Học..."></textarea>
+                <div *ngIf="editCourseForm.get('bodyContent')?.invalid && (editCourseForm.get('bodyContent')?.dirty || editCourseForm.get('bodyContent')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Chi Tiết Khóa Học!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Số Tuần Học:</p>
+                <input formControlName='numberOfMonths' type="number"  placeholder="Nhập Thời Gian Học...">
+                <div *ngIf="editCourseForm.get('numberOfMonths')?.invalid && (editCourseForm.get('numberOfMonths')?.dirty || editCourseForm.get('numberOfMonths')?.touched)" class="alert">
+                    Vui Lòng Nhập Thời Gian Học!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Học Phí:</p>
+                <input formControlName='tuition' type="text" placeholder="Nhập Địa Chỉ...">
+                <div *ngIf="editCourseForm.get('tuition')?.invalid && (editCourseForm.get('tuition')?.dirty || editCourseForm.get('tuition')?.touched)" class="alert">
+                    Vui Lòng Nhập Học Phí!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Khuyến Mãi:</p>
+                <input formControlName='discount' type="number" placeholder="Nhập Khuyến Mãi...">
+                <div *ngIf="editCourseForm.get('discount')?.invalid && (editCourseForm.get('discount')?.dirty || editCourseForm.get('discount')?.touched)" class="alert">
+                    Vui Lòng Nhập Khuyến Mãi!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <div style="display: flex; width: 100%; justify-content: space-between;">
+                    <div class="widget__item">
+                        <p>Buổi 1:</p>
+                        <div style="width: 100%; display: flex; align-items: center;">
+                            <div class="selectItem">
+                                <mat-select formControlName='schedule1' placeholder='Ngày Học Trong Tuần'>
+                                    <mat-option value="T2">Thứ 2</mat-option>
+                                    <mat-option value="T3">Thứ 3</mat-option>
+                                    <mat-option value="T4">Thứ 4</mat-option>
+                                    <mat-option value="T5">Thứ 5</mat-option>
+                                    <mat-option value="T6">Thứ 6</mat-option>
+                                    <mat-option value="T7">Thứ 7</mat-option>
+                                    <mat-option value="CN">Chủ Nhật</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeStart1 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeEnd1 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget__item">
+                        <p>Buổi 2:</p>
+                        <div style="width: 100%; display: flex; align-items: center;">
+                            <div class="selectItem">
+                                <mat-select formControlName='schedule2' placeholder='Ngày Học Trong Tuần'>
+                                    <mat-option value="T3">Thứ 3</mat-option>
+                                    <mat-option value="T4">Thứ 4</mat-option>
+                                    <mat-option value="T5">Thứ 5</mat-option>
+                                    <mat-option value="T6">Thứ 6</mat-option>
+                                    <mat-option value="T7">Thứ 7</mat-option>
+                                    <mat-option value="CN">Chủ Nhật</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeStart2 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeEnd2 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="widget__item">
+                        <p>Buổi 3:</p>
+                        <div style="width: 100%; display: flex; align-items: center;">
+                            <div class="selectItem">
+                                <mat-select formControlName='schedule3' placeholder='Ngày Học Trong Tuần'>
+                                    <mat-option value="T4">Thứ 4</mat-option>
+                                    <mat-option value="T5">Thứ 5</mat-option>
+                                    <mat-option value="T6">Thứ 6</mat-option>
+                                    <mat-option value="T7">Thứ 7</mat-option>
+                                    <mat-option value="CN">Chủ Nhật</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeStart3 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeEnd3 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div *ngIf="editCourseForm.get('schedule1')?.invalid && (editCourseForm.get('schedule1')?.dirty || editCourseForm.get('schedule1')?.touched)" class="alert">
+                    Vui Lòng Điền Đầy Đủ Thông Tin Ngày Học Thứ 1 Và 2!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Ngày Khai Giảng:</p>
+                <input formControlName='theOpeningDay' type="datetime-local" placeholder="Nhập Ngày Khai Giảng...">
+                <div *ngIf="editCourseForm.get('theOpeningDay')?.invalid && (editCourseForm.get('theOpeningDay')?.dirty || editCourseForm.get('theOpeningDay')?.touched)" class="alert">
+                    Vui Lòng Nhập Ngày Khai Giảng!
+                </div>
+            </div>
+            
+            <div class="info__widget">
+                <p>Ghi Chú:</p>
+                <textarea rows="5" cols="100" formControlName='note' type="text" placeholder="Nhập Ghi Chú..."></textarea>
+            </div>  
+            
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" (click)=confirm(editCourseForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner color='primary' diameter=30 strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>

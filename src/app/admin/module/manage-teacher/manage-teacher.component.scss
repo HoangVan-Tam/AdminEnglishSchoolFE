@@ -1,0 +1,152 @@
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+
+    width: 99%;
+}
+.body{
+    border-radius: 5px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    width: 99%;
+    height: 86.5vh;
+    align-items: flex-start;
+    box-shadow: 1px 1px 2px 2px grey;
+    border: 2px solid grey;
+}
+.student{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 98%;
+}
+.navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+}
+.input__area{
+    width: 30%;
+}
+.input__area input{
+    padding-left: 10px;
+    font-size: 1.8rem;
+    border: none;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+.input__area i{
+    margin-left: -25px;
+}
+.navbar i{
+    font-size: 2rem;
+}
+button{
+    margin-right: 3px;
+    border-radius: 2.5px;
+    box-shadow: 1px 1px 1px 1px darkslategrey;
+}
+.navbar button{
+    font-size: 1.6rem;
+    color: white;
+    border: none;
+    background-color:#3a6794;
+    height: 50px;
+    font-weight: 600;
+}
+button:hover{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px darkslategrey;
+}
+button:active{
+    box-shadow: 1px 1px 1px 1px darkslategrey;
+}
+button:focus{
+    outline: none;
+    border: none;
+}
+.body__student{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+tr{
+    height: 5.525vmin;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+tr:hover{
+    background-color: #9aa1cf;
+    cursor: pointer;
+    
+}
+th{
+    font-size: 2rem;
+    background-color: rgb(69, 108, 146);
+    color: white;
+}
+th i{
+    font-size: 1.4rem;
+}
+th i:hover{
+    box-shadow: 1px 1px 1px 1px black;
+}
+td{
+    white-space: nowrap; 
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #234262;
+}
+td button{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #234262;
+    color: white;
+}
+td button:hover{
+    cursor: pointer;
+    box-shadow: 0.5px 0.5px 0.5px 1px black;
+}
+.spinner{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+.paginate{
+    font-size: 2.0rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    bottom: 15px;
+}
+@media only screen and (max-height: 670px) {
+    tr{
+        height: 5.3vmin;
+    }
+  }

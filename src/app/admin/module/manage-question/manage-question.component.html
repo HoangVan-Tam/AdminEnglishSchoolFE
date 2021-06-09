@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="title">
+      <app-title-page [titleOfPage]='titleOfPage'></app-title-page>
+    </div>
+    <div class="body">
+      <div class="body__container">
+        <div class="navbar">
+          <div class="input__area">
+            <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+          </div>
+          <button (click)='OpenAddQuestionDialog()'>Thêm Câu Hỏi&nbsp; <i class="far fa-plus-square"></i></button>
+        </div>
+        <div class="body__table">
+          <table>
+              <tr>
+                <th (click)="sort('questionId')">Mã Câu Hỏi&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('questionDetail')">Câu Hỏi&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('level')">Level&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('answer1')">Câu A&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('answer2')">Câu B&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('answer3')">Câu C&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('answer4')">Câu D&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('rightAnswer')">Đáp Án&nbsp;<i class="fas fa-sort"></i></th>
+                <th></th>
+              </tr>
+              <tr *ngFor='let questions of Question | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:12, currentPage: pageChanged}'>
+                <td>{{questions.questionId}}</td>
+                <td>{{questions.questionDetail}}</td>
+                <td>{{questions.level}}</td>
+                <td>{{questions.answer1}}</td>
+                <td>{{questions.answer2}}</td>
+                <td>{{questions.answer3}}</td>
+                <td>{{questions.answer4}}</td>
+                <td>{{questions.rightAnswer}}</td>
+                <td><button (click)='OpenEditQuestionDialog(questions)'><i class="far fa-edit"></i></button></td>
+              </tr>
+          </table>
+          <div class="spinner">
+            <mat-spinner color='' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+          </div>
+        </div>    
+        <div class="paginate">            
+          <pagination-controls
+              class="custom__paginate"
+              [maxSize]="maxSize"
+              [directionLinks]="directionLinks"
+              [autoHide]="autoHide"
+              [responsive]="responsive"
+              [previousLabel]="labels.previousLabel"
+              [nextLabel]="labels.nextLabel"
+              [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+              [screenReaderPageLabel]="labels.screenReaderPageLabel"
+              [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+              (pageChange)="pageChanged=$event">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+

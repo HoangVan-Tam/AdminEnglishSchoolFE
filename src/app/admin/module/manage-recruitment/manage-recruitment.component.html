@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="title">
+      <app-title-page [titleOfPage]='titleOfPage'></app-title-page>
+    </div>
+    <div class="body">
+      <div class="body__container">
+        <div class="navbar">
+          <div class="input__area">
+            <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+          </div>
+          <button (click)='OpenAddRecruitmentDialog()'>Thêm Tuyển Dụng&nbsp; <i class="far fa-plus-square"></i></button>
+        </div>
+        <div class="body__table">
+          <table>
+              <tr>
+                <th (click)="sort('id')">Mã TD&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('vacancies')">Vị Trí TD&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('jobDecription')">Mô Tả&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('jobRequirements')">Yêu Cầu&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('rightsOfTheEmployees')">Quyền Lợi Được Hưởng&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('amount')">Số Lượng&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('complete')">Trạng Thái&nbsp;<i class="fas fa-sort"></i></th>
+                <!--th></th-->
+                <th></th>
+                <th></th>
+              </tr>
+              <tr *ngFor='let recruitment of Recruitments | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:12, currentPage: pageChanged}'>
+                <td>{{recruitment.id}}</td>
+                <td>{{recruitment.vacancies}}</td>
+                <td>{{recruitment.jobDecription}}</td>
+                <td>{{recruitment.jobRequirements}}</td>
+                <td>{{recruitment.rightsOfTheEmployees}}</td>
+                <td>{{recruitment.amount}}</td>
+                <td>{{recruitment.complete ? "Hoàn Tất":"Chưa Hoàn Tất"}}</td>
+                <!--td><button><i class="far fa-address-card"></i></button></td-->
+                <td><button (click)="DeleteRecruitment(recruitment.id)"><i class="fas fa-trash-alt"></i></button></td>
+                <td><button (click)="OpenEditRecruimentDialog(recruitment)"><i class="far fa-edit"></i></button></td>
+              </tr>
+            </table>
+        </div>   
+        <div class="spinner">
+          <mat-spinner color='' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+        </div> 
+        <div class="paginate">            
+          <pagination-controls
+              class="custom__paginate"
+              [maxSize]="maxSize"
+              [directionLinks]="directionLinks"
+              [autoHide]="autoHide"
+              [responsive]="responsive"
+              [previousLabel]="labels.previousLabel"
+              [nextLabel]="labels.nextLabel"
+              [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+              [screenReaderPageLabel]="labels.screenReaderPageLabel"
+              [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+              (pageChange)="pageChanged=$event">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+</div>
+

@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="title">
+      <app-title-page [titleOfPage]='titleOfPage' ></app-title-page>
+    </div>
+    <div class="body">
+      <div class="body__container">
+        <div class="navbar">
+          <div class="input__area">
+            <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+          </div>
+          <button (click)="OpenAddDepartmentDialog()">Thêm Trung Tâm&nbsp; <i class="far fa-plus-square"></i></button>
+        </div>
+        <div class="body__table">
+          <table>
+              <tr>
+                <th (click)="sort('id')">Mã TT&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('name')">Tên TT&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('city')">Thành Phố&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('address')">Địa Chỉ TT&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('detail')">Chi Tiết&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('numberStudent')">SL Học Viên&nbsp;<i class="fas fa-sort"></i></th>
+                <th></th>
+              </tr>
+              <tr *ngFor='let departments of Department | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:12, currentPage: pageChanged}'>
+                <td>{{departments.id}}</td>
+                <td>{{departments.name}}</td>
+                <td>{{departments.city}}</td>
+                <td>{{departments.address}}</td>
+                <td>{{departments.detail}}</td>
+                <td>{{departments.numberStudent}}</td>
+                <td><button (click)="OpenEditDepartmentDialog(departments)"><i class="far fa-edit"></i></button></td>
+              </tr>
+            </table>
+        </div>  
+        
+        <div class="spinner">
+          <mat-spinner color='light-white' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+        </div> 
+        
+        <div class="paginate">            
+          <pagination-controls
+              class="custom__paginate"
+              [maxSize]="maxSize"
+              [directionLinks]="directionLinks"
+              [autoHide]="autoHide"
+              [responsive]="responsive"
+              [previousLabel]="labels.previousLabel"
+              [nextLabel]="labels.nextLabel"
+              [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+              [screenReaderPageLabel]="labels.screenReaderPageLabel"
+              [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+              (pageChange)="pageChanged=$event">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+</div>
+

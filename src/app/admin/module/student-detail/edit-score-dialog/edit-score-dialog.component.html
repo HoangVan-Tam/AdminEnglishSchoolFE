@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <div class="info__widget">
+            <p>Kỳ Thi:</p>
+            <input type="text" disabled [(ngModel)]="data.scores.nameOfExam">
+        </div>
+        <div class="info__widget">
+            <p>Listening:</p>
+            <input type="number" [(ngModel)]="data.scores.listening">
+        </div>
+        <div class="info__widget">
+            <p>Speaking:</p>
+            <input type="number" [(ngModel)]="data.scores.speaking">
+        </div>  
+        <div class="info__widget">
+            <p>Reading:</p>
+            <input type="number" [(ngModel)]="data.scores.reading">
+        </div>
+        <div class="info__widget">
+            <p>Writing:</p>
+            <input type="number" [(ngModel)]="data.scores.writing">
+        </div> 
+    </div>
+    <mat-dialog-actions align="end">
+        <button class="close"(click)=closed()>Hủy</button>
+        <button class="confirm" (click)=confirm()>Thay Đổi</button>
+    </mat-dialog-actions>
+</div>

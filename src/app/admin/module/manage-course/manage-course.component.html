@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="title">
+    <app-title-page [titleOfPage]='titleOfPage'></app-title-page>
+  </div>
+  <div class="body">
+    <div class="body__container">
+      <div class="navbar">
+        <div class="input__area">
+          <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+        </div>
+        <button (click)="OpenAddCourseDialog()">Thêm Khóa Học&nbsp; <i class="far fa-plus-square"></i></button>
+      </div>
+      <div class="body__table">
+        <table>
+            <tr>
+              <th (click)="sort('id')">Mã&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('name')">Tên Khóa Học&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('title')">Tiêu Đề&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('headContent')">Giới Thiệu&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('bodyContent')">Chi tiết&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('numberOfMonths')">Thời Gian Học&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('discount')">Khuyến Mãi&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('tuition')">Học Phí&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('schedules')">Số Ngày Học&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('theOpeningDay')">Ngày Khai Giảng&nbsp;<i class="fas fa-sort"></i></th>
+              <th></th>
+            </tr>
+            <tr *ngFor='let courses of Course | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:12, currentPage: pageChanged}'>
+              <td>{{courses.id}}</td>
+              <td>{{courses.name}}</td>
+              <td>{{courses.title}}</td>
+              <td>{{courses.headContent}}</td>
+              <td>{{courses.bodyContent}}</td>
+              <td>{{courses.numberOfMonths}}</td>
+              <td>{{courses.discount}}</td>
+              <td>{{courses.tuition}}</td>
+              <td>{{courses.schedules.length}}</td>
+              <td>{{courses.theOpeningDay | date:'dd/MM/YYYY - hh:mm aa'}}</td>
+              <td><button (click)="OpenEditCourseDialog(courses)"><i class="far fa-edit"></i></button></td>
+            </tr>
+          </table>
+      </div> 
+      <div class="spinner">
+        <mat-spinner color='light-white' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+      </div>    
+      <div class="paginate">            
+        <pagination-controls
+            class="custom__paginate"
+            [maxSize]="maxSize"
+            [directionLinks]="directionLinks"
+            [autoHide]="autoHide"
+            [responsive]="responsive"
+            [previousLabel]="labels.previousLabel"
+            [nextLabel]="labels.nextLabel"
+            [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+            [screenReaderPageLabel]="labels.screenReaderPageLabel"
+            [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+            (pageChange)="pageChanged=$event">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

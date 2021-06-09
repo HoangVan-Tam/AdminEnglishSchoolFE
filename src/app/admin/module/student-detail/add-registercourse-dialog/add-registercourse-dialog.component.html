@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body">
+        <div class="body__container">
+            <div class="navbar">
+                <div class="input__area">
+                    <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="body__table" id="table1">
+                <table>
+                    <tr>
+                        <th (click)="sort('id')">Mã&nbsp;<i class="fas fa-sort"></i></th>
+                        <th style="max-width: 250px;" (click)="sort('name')">Tên Khóa Học&nbsp;<i class="fas fa-sort"></i></th>
+                        <th style="max-width: 200px;" (click)="sort('nameDepartment')">Trung Tâm&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('numberOfMonths')">Thời Gian Học&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('discount')">Khuyến Mãi&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('tuition')">Học Phí&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('schedule')">Thời Khóa Biểu&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('theOpeningDay')">Ngày Khai Giảng&nbsp;<i class="fas fa-sort"></i></th>
+                        <!--th></th-->
+                    </tr>
+                    <tr (click)='checkedRowTable(courses)' id='{{courses.id}}' *ngFor='let courses of Courses | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:5, currentPage: pageChanged}'>
+                        <td>{{courses.id}}</td>
+                        <td style="max-width: 250px;">{{courses.name}}</td>
+                        <td style="max-width: 200px;">{{courses.departments.name}}</td>
+                        <td>{{courses.numberOfMonths}} Tuần</td>
+                        <td>{{courses.discount}}</td>
+                        <td>{{courses.tuition}}</td>
+                        <td>{{courses.schedules[0].day}} | {{courses.schedules[0].timeStart}}-{{courses.schedules[0].timeEnd}} 
+                            <br>{{courses.schedules[1].day}} | {{courses.schedules[1].timeStart}}-{{courses.schedules[1].timeEnd}}
+                            <br>{{courses.schedules[2]?.day}} | {{courses.schedules[2]?.timeStart}}-{{courses.schedules[2]?.timeEnd}}
+                        </td>
+                        <td>{{courses.theOpeningDay | date:'dd/MM/YYYY - hh:mm aa'}}</td>
+                        <!--td><button (click)="OpenEditCourseDialog(courses)"><i class="far fa-edit"></i></button></td-->
+                    </tr>
+                </table>
+            </div> 
+            <div class="body__table" id="table2">
+                <table>
+                    <tr>
+                        <th (click)="sort('id')">Mã&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('name')">Tên Khóa Học&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('schedule')">Buổi 1&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('schedule')">Buổi 2&nbsp;<i class="fas fa-sort"></i></th>
+                        <th (click)="sort('schedule')">Buổi 3&nbsp;<i class="fas fa-sort"></i></th>
+                        <!--th></th-->
+                    </tr>
+                    <tr (click)='checkedRowTable(courses)' id='2{{courses.id}}' *ngFor='let courses of Courses | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:9, currentPage: pageChanged}'>
+                        <td>{{courses.id}}</td>
+                        <td>{{courses.name}}</td>
+                        <td>{{courses.schedules[0].day}} | {{courses.schedules[0].timeStart}} - {{courses.schedules[0].timeEnd}}</td>
+                        <td>{{courses.schedules[1].day}} | {{courses.schedules[1].timeStart}} - {{courses.schedules[1].timeEnd}}</td>
+                        <td>{{courses.schedules[2]?.day}} | {{courses.schedules[2]?.timeStart}} - {{courses.schedules[2]?.timeEnd}}</td>
+                        <!--td><button (click)="OpenEditCourseDialog(courses)"><i class="far fa-edit"></i></button></td-->
+                    </tr>
+                </table>
+            </div> 
+            <div class="spinner">
+                <mat-spinner color='light-white' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+            </div>    
+            <div class="paginate">            
+                <pagination-controls
+                    class="custom__paginate"
+                    [maxSize]="maxSize"
+                    [directionLinks]="directionLinks"
+                    [autoHide]="autoHide"
+                    [responsive]="responsive"
+                    [previousLabel]="labels.previousLabel"
+                    [nextLabel]="labels.nextLabel"
+                    [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                    [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+                    (pageChange)="pageChanged=$event">
+                </pagination-controls>
+            </div>    
+        </div>
+    </div>
+    <mat-dialog-actions align="end">
+        <button class="close"(click)=closed()>Hủy</button>
+        <button class="confirm alternate-theme" (click)=confirm()>
+            <p>Xác Nhận</p>
+            <mat-spinner diameter=30 color='primary' strokeWidth=3 *ngIf='ShowSpinnerButton'></mat-spinner>
+        </button>
+    </mat-dialog-actions>
+</div>

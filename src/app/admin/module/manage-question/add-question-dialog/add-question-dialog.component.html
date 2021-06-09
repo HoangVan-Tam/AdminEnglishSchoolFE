@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='addQuestionForm'>
+
+            <div class="info__widget" style="height: 200px;">
+                <p>Câu Hỏi:</p>
+                <textarea rows="50" style="height: 180px;" formControlName=questionDetail type="text"  placeholder="Nhập Câu Hỏi..."></textarea>
+                <div *ngIf="addQuestionForm.get('questionDetail')?.invalid && (addQuestionForm.get('questionDetail')?.dirty || addQuestionForm.get('questionDetail')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Câu Hỏi!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Mức Độ:</p>
+                <mat-select formControlName='level' placeholder='Chọn Khóa Học'>
+                    <mat-option value='A'>Khó</mat-option>
+                    <mat-option value='B'>Vừa</mat-option>
+                    <mat-option value='C'>Dễ</mat-option>
+                </mat-select>
+                <div *ngIf="addQuestionForm.get('level')?.invalid && (addQuestionForm.get('level')?.dirty || addQuestionForm.get('level')?.touched)" class="alert">
+                    Vui Lòng Chọn Mức Độ Câu Hỏi!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Câu A:</p>
+                <input formControlName='answer1' type="text" placeholder="Câu A...">
+                <div *ngIf="addQuestionForm.get('answer1')?.invalid && (addQuestionForm.get('answer1')?.dirty || addQuestionForm.get('answer1')?.touched)" class="alert">
+                    Vui Lòng Nhập Đáp Án A!
+                </div>
+            </div>
+    
+            <div class="info__widget">
+                <p>Câu B:</p>
+                <input formControlName='answer2' type="text" placeholder="Câu B...">
+                <div *ngIf="addQuestionForm.get('answer2')?.invalid && (addQuestionForm.get('answer2')?.dirty || addQuestionForm.get('answer2')?.touched)" class="alert">
+                    Vui Lòng Nhập Đáp Án B!
+                </div>
+            </div>
+    
+            <div class="info__widget">
+                <p>Câu C:</p>
+                <input formControlName='answer3' type="text" placeholder="Câu C...">
+                <div *ngIf="addQuestionForm.get('answer3')?.invalid && (addQuestionForm.get('answer3')?.dirty || addQuestionForm.get('answer3')?.touched)" class="alert">
+                    Vui Lòng Nhập Đáp Án C!
+                </div>
+            </div>   
+
+            <div class="info__widget">
+                <p>Câu D:</p>
+                <input formControlName='answer4' type="text" placeholder="Câu D...">
+                <div *ngIf="addQuestionForm.get('answer4')?.invalid && (addQuestionForm.get('answer4')?.dirty || addQuestionForm.get('answer4')?.touched)" class="alert">
+                    Vui Lòng Nhập Đáp Án D!
+                </div>
+            </div>  
+
+            <div class="info__widget">
+                <p>Đáp Án:</p>
+                <mat-select formControlName='rightAnswer' placeholder='Chọn Khóa Học'>
+                    <mat-option value='A'>A</mat-option>
+                    <mat-option value='B'>B</mat-option>
+                    <mat-option value='C'>C</mat-option>
+                    <mat-option value='D'>D</mat-option>
+                </mat-select>
+                <div *ngIf="addQuestionForm.get('rightAnswer')?.invalid && (addQuestionForm.get('rightAnswer')?.dirty || addQuestionForm.get('rightAnswer')?.touched)" class="alert">
+                    Vui Lòng Chọn Đáp Án Đúng!
+                </div>
+            </div>
+            
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" (click)=confirm(addQuestionForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner diameter=30 color='primary' strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>
+
+

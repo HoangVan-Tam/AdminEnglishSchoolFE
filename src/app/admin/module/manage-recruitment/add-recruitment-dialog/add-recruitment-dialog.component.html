@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='addRecruitmentForm'>
+
+            <div class="info__widget">
+                <p>Vị Trí Công Việc:</p>
+                <input formControlName=vacancies type="text"  placeholder="Nhập Vị Trí Công Việc...">
+                <div *ngIf="addRecruitmentForm.get('vacancies')?.invalid && (addRecruitmentForm.get('vacancies')?.dirty || addRecruitmentForm.get('vacancies')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Vị Trí Công Việc!
+                </div>
+            </div>
+
+            <div class="info__widget widget__larger">
+                <p>Mô Tả Công Việc:</p>
+                <textarea formControlName='jobDecription' type="number"  placeholder="Nhập Mô Tả Công Việc..."></textarea>
+                <div *ngIf="addRecruitmentForm.get('jobDecription')?.invalid && (addRecruitmentForm.get('jobDecription')?.dirty || addRecruitmentForm.get('jobDecription')?.touched)" class="alert">
+                    Vui Lòng Nhập Mô Tả Công Việc!
+                </div>
+            </div>
+
+            <div class="info__widget widget__larger">
+                <p>Yêu Cầu Công Việc:</p>
+                <textarea formControlName='jobRequirements' type="text" placeholder="Nhập Yêu Cầu Công Việc.."></textarea>
+                <div *ngIf="addRecruitmentForm.get('jobRequirements')?.invalid && (addRecruitmentForm.get('jobRequirements')?.dirty || addRecruitmentForm.get('jobRequirements')?.touched)" class="alert">
+                    Vui Lòng Nhập Yêu Cầu Công Việc!
+                </div>
+            </div>
+    
+            <div class="info__widget widget__larger">
+                <p>Quyền Lợi Được Hưởng:</p>
+                <textarea formControlName='rightsOfTheEmployees' type="text" placeholder="Nhập Quyền Lợi Được Hưởng..."></textarea>
+                <div *ngIf="addRecruitmentForm.get('rightsOfTheEmployees')?.invalid && (addRecruitmentForm.get('rightsOfTheEmployees')?.dirty || addRecruitmentForm.get('rightsOfTheEmployees')?.touched)" class="alert">
+                    Vui Lòng Nhập Quyền Lợi Được Hưởng!
+                </div>
+            </div>
+    
+            <div class="info__widget">
+                <p>Địa Chỉ Tuyển Dụng:</p>
+                <input formControlName=address type="text"  placeholder="Địa Chỉ Tuyển Dụng...">
+                <div *ngIf="addRecruitmentForm.get('address')?.invalid && (addRecruitmentForm.get('address')?.dirty || addRecruitmentForm.get('address')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Địa Chỉ Tuyển Dụng!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Số Lượng Tuyển Dụng:</p>
+                <input formControlName='amount' type="number" placeholder="Nhập Số Lượng Tuyển Dụng...">
+                <div *ngIf="addRecruitmentForm.get('amount')?.invalid && (addRecruitmentForm.get('amount')?.dirty || addRecruitmentForm.get('amount')?.touched)" class="alert">
+                    Vui Lòng Nhập Số Lượng Tuyển Dụng!
+                </div>
+            </div> 
+            
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" (click)=confirm(addRecruitmentForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner diameter=30 color='primary' strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>
+
+

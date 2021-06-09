@@ -1,0 +1,145 @@
+<div class="container">
+    <div class="title">
+        <app-title-page [titleOfPage]='titleOfPage'></app-title-page>
+      </div>
+    <div class="body__top">
+        <div class="detail__container hide">
+            <div class="img__avatar">
+                <img src="./assets/img/man-avatar.png" alt="">
+            </div>
+            <div class="body__detail">
+                <div class="info__widget">
+                    <p class="title__info">Mã HV: </p>&nbsp;
+                    <p class="info">{{Student.studentId}}</p>
+                </div>
+                <div class="info__widget info__name">
+                    <p class="title__info">Tên HV: </p>&nbsp;
+                    <p class="info">{{Student.lastName}} {{Student.firstName}}</p>
+                </div>
+                <div class="info__widget">
+                    <p class="title__info">Ngày Sinh: </p>&nbsp;
+                    <p class="info">{{Student.birthday | date:'dd/MM/YYYY'}}</p>
+                </div>
+                <div class="info__widget">
+                    <p class="title__info">Giới Tính: </p>&nbsp;
+                    <p class="info">{{Student.sex ? 'Nam' : 'Nữ'}}</p>
+                </div>
+                <div class="info__widget">
+                    <p class="title__info">Level: </p>&nbsp;
+                    <p class="info">{{Student.level}}</p>
+                </div>
+                <div class="info__widget info__name">
+                    <p class="title__info">Địa Chỉ: </p>&nbsp;
+                    <p class="info">{{Student.address}}</p>
+                </div>
+                <div class="info__widget">
+                    <p class="title__info">Trung Tâm: </p>&nbsp;
+                    <p class="info">{{Student.departments?.name}}</p>
+                </div>
+                <div class="info__widget">
+                    <p class="title__info">SĐT: </p>&nbsp;
+                    <p class="info">{{Student.phoneNumber}}</p>
+                </div> 
+                <div class="info__widget">
+                    <p class="title__info">Mã Phụ Huynh: </p>&nbsp;
+                    <p class="info">{{Student.parents?.parentId}}</p>
+                </div>
+                <div class="info__widget info__name">
+                    <p class="title__info">Phụ Huynh: </p>&nbsp;
+                    <p class="info">{{Student.parents?.lastName}} {{Student.parents?.firstName}}</p>
+                </div>
+                <div class="info__widget info__name">
+                    <p class="title__info">Email: </p>&nbsp;
+                    <p class="info">{{Student.email}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="spinner" style="margin: 0;">
+            <mat-spinner color='' diameter=50 strokeWidth=5 *ngIf='ShowSpinnerInfo'></mat-spinner>
+        </div>
+        
+    </div>
+    <div class="body__bottom">
+        <div class="body__container">
+            <div class="navbar">
+                <div class="input__area">
+                  <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+                </div>
+                <div class="function">
+                    <!--button *ngIf='CheckParent' (click)="openDialogAddParent()">Thêm Phụ Huynh</button-->
+                    <button (click)="openDialogRegisterCourse()">Đăng Ký Khóa Học</button>
+                    <button class="button hide" (click)="SeeDetail()">Danh Sách Khóa Học</button>
+                </div>
+              </div>
+
+              <table class="student-detail">
+                <tr>
+                    <th (click)="sort('courses.name')">Tên KH&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('courses.schedule')">Lịch Học&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('dayStart')">Ngày Bắt Đầu&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('dayFinish')">Ngày Kết Thúc&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('tuition')">Tiền Đóng Học Phí&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('finish')">Hoàn Thành&nbsp;<i class="fas fa-sort"></i></th>
+                    <!--th></th>
+                    <th></th-->
+                </tr>
+                <tr *ngFor='let details of DetailCourseStudent | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:6, currentPage: pageChanged}'>
+                    <td>{{details.courses.name}}</td>
+                    <td>{{details.courses.schedules[0].day}} | {{details.courses.schedules[0].timeStart}}-{{details.courses.schedules[0].timeEnd}} 
+                        <br>{{details.courses.schedules[1].day}} | {{details.courses.schedules[1].timeStart}}-{{details.courses.schedules[1].timeEnd}}
+                        <br>{{details.courses.schedules[2]?.day}} | {{details.courses.schedules[2]?.timeStart}}-{{details.courses.schedules[2]?.timeEnd}}
+                    </td>
+                    <td>{{details.dayStart | date:'dd/MM/YYYY'}}</td>
+                    <td>{{details.dayFinish | date:'dd/MM/YYYY'}}</td>
+                    <td>{{details.tuition}}</td>
+                    <td>{{details.finish ? 'Hoàn Thành':'Chưa Hoàn Thành'}}</td>
+                    <!--td><button (click)="SeeScore(details.courseDetailId)"><i class="fas fa-user-graduate"></i></button></td>
+                    <td><button (click)="SeeAttendance(details.courseDetailId)"><i class="far fa-calendar-check"></i></button></td-->
+                </tr>
+            </table>
+
+
+            <table class="student-score hide">
+                <tr>
+                    <th (click)="sort('dayFinish')">Kỳ Thi&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('tuition')">Listening&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('note')">Speaking&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('note')">Reading&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('note')">Writing&nbsp;<i class="fas fa-sort"></i></th>
+                    <th></th>
+                    <!--th></th-->
+                </tr>
+                <tr *ngFor='let scores of ScoreDetail | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:13, currentPage: pageChanged}'>
+                    <td>{{scores.nameOfExam}}</td>
+                    <td>{{scores.listening}}</td>
+                    <td>{{scores.speaking}}</td>
+                    <td>{{scores.reading}}</td>
+                    <td>{{scores.writing}}</td>
+                    <td><button (click)='OpenEditScoreDialog(scores)'><i class="far fa-edit"></i></button></td>
+                    <!--td><button><i class="far fa-edit"></i></button></td-->
+                </tr>
+            </table>
+
+
+            <div class="spinner">
+                <mat-spinner color='' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+            </div>
+
+            <div class="paginate">            
+                <pagination-controls
+                    [maxSize]="maxSize"
+                    [directionLinks]="directionLinks"
+                    [autoHide]="autoHide"
+                    [responsive]="responsive"
+                    [previousLabel]="labels.previousLabel"
+                    [nextLabel]="labels.nextLabel"
+                    [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                    [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+                    (pageChange)="pageChanged=$event">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

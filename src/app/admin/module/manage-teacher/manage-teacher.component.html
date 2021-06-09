@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="title">
+    <app-title-page [titleOfPage]='titleOfPage'></app-title-page>
+  </div>
+  <div class="body">
+    <div class="student">
+      <div class="navbar">
+        <div class="input__area">
+          <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+        </div>
+        <button (click)="openAddStudentDialog()">Thêm Giáo Viên&nbsp; <i class="far fa-plus-square"></i></button>
+      </div>
+      <div class="body__student">
+        <table>
+            <tr>
+              <th (click)="sort('userId')">Mã Giáo Viên&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('firstName')">Họ Tên&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('birdDay')">Ngày Sinh&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('sex')">Giới Tính&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('address')">Địa Chỉ&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('phoneNumber')">SĐT&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('email')">Email&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('status')">Tình Trạng&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('departmentName')">Trung Tâm&nbsp;<i class="fas fa-sort"></i></th>
+              <!--th></th-->
+              <th></th>
+              <th></th>
+            </tr>
+            <tr *ngFor='let teacher of Teachers | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:13, currentPage: pageChanged}'>
+              <td>{{teacher.userId}}</td>
+              <td>{{teacher.lastName}} {{teacher.firstName}}</td>
+              <td>{{teacher.birthday | date:'dd/MM/YYYY'}}</td>
+              <td>{{teacher.sex ? 'Nam':'Nữ'}}</td>
+              <td>{{teacher.address}}</td>
+              <td>{{teacher.phoneNumber}}</td>
+              <td>{{teacher.email}}</td>
+              <td>{{teacher.status ? 'Đã Kích Hoạt':'Vô Hiệu Hóa'}}</td>
+              <td>{{teacher.departments.name}}</td>
+              <!--td><button routerLink='{{teacher.userId}}'><i class="far fa-address-card"></i></button></td-->
+              <td><button (click)=openEditStudentDetailDialog(teacher)><i class="far fa-edit"></i></button></td>
+              <td><button (click)=openDialogRegisterCourse(teacher)><i class="fas fa-plus-square"></i></button></td>
+            </tr>
+        </table>
+      </div>    
+      <div class="spinner">
+        <mat-spinner color='' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+      </div>
+      <div class="paginate">            
+        <pagination-controls
+            class="custom__paginate"
+            [maxSize]="maxSize"
+            [directionLinks]="directionLinks"
+            [autoHide]="autoHide"
+            [responsive]="responsive"
+            [previousLabel]="labels.previousLabel"
+            [nextLabel]="labels.nextLabel"
+            [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+            [screenReaderPageLabel]="labels.screenReaderPageLabel"
+            [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+            (pageChange)="pageChanged=$event">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,106 @@
+.container{
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(180deg, rgb(55, 66, 150), rgb(95, 80, 180), rgb(75, 46, 150));
+}
+.grid__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+}
+.grid__container h3{
+    font-size: 4rem;
+    color: white;
+}
+.grid__container p{
+    color: white;
+}
+.form__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: 325px;
+    background-color: white;
+    border-radius: 10px;
+}
+.form__container h2{
+    margin: 20px 0 0 0;
+    font-size: 2.2rem;
+    color: slategray;
+    font-weight: 300;
+}
+form{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.info__widget{
+    width: 90%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;  
+    input{
+        border-radius: 10px;
+        font-size: 1.8rem;
+        width: 100% ;
+        padding: 5px;
+        border: none;
+        outline: none;
+        border: 1px solid black;
+        height: 45px;
+    }
+    input:focus{
+        border: 3px solid #3A6794;
+    }
+    input:disabled{
+        background-color: whitesmoke;
+    }
+    .alert{
+            color: red;
+            font-size: 1.2rem;
+    }
+}
+button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 225px;
+    height: 50px;
+    background-color: #37509E;
+    border-radius: 10px;
+    outline: none;
+    font-size: 2rem;
+    color: white;
+    p{
+        text-align: center;
+        margin: 0;
+    }
+}
+button:hover{
+    p{
+        color: #3F448A !important;
+    }
+    cursor: pointer;
+    background-color: white;
+    border: 3px solid #3F448A;
+    font-weight: 600;
+}
+button:focus{
+    p{
+        color: #3F448A !important;
+    }
+    cursor: pointer;
+    background-color: white;
+    border: 3px solid #3F448A;
+    font-weight: 600;
+}

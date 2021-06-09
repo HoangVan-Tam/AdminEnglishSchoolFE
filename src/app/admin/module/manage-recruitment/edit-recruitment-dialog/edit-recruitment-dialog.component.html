@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='editRecruitmentForm'>
+
+            <div class="info__widget">
+                <p>ID Công Việc:</p>
+                <input formControlName=id type="text"  placeholder="Nhập Vị Trí Công Việc...">
+                <div *ngIf="editRecruitmentForm.get('id')?.invalid && (editRecruitmentForm.get('id')?.dirty || editRecruitmentForm.get('id')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Vị Trí Công Việc!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Vị Trí Công Việc:</p>
+                <input formControlName=vacancies type="text"  placeholder="Nhập Vị Trí Công Việc...">
+                <div *ngIf="editRecruitmentForm.get('vacancies')?.invalid && (editRecruitmentForm.get('vacancies')?.dirty || editRecruitmentForm.get('vacancies')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Vị Trí Công Việc!
+                </div>
+            </div>
+
+            <div class="info__widget widget__larger">
+                <p>Mô Tả Công Việc:</p>
+                <textarea formControlName='jobDecription' type="number"  placeholder="Nhập Mô Tả Công Việc..."></textarea>
+                <div *ngIf="editRecruitmentForm.get('jobDecription')?.invalid && (editRecruitmentForm.get('jobDecription')?.dirty || editRecruitmentForm.get('jobDecription')?.touched)" class="alert">
+                    Vui Lòng Nhập Mô Tả Công Việc!
+                </div>
+            </div>
+
+            <div class="info__widget widget__larger">
+                <p>Yêu Cầu Công Việc:</p>
+                <textarea formControlName='jobRequirements' type="text" placeholder="Nhập Yêu Cầu Công Việc.."></textarea>
+                <div *ngIf="editRecruitmentForm.get('jobRequirements')?.invalid && (editRecruitmentForm.get('jobRequirements')?.dirty || editRecruitmentForm.get('jobRequirements')?.touched)" class="alert">
+                    Vui Lòng Nhập Yêu Cầu Công Việc!
+                </div>
+            </div>
+    
+            <div class="info__widget widget__larger">
+                <p>Quyền Lợi Được Hưởng:</p>
+                <textarea formControlName='rightsOfTheEmployees' type="text" placeholder="Nhập Quyền Lợi Được Hưởng..."></textarea>
+                <div *ngIf="editRecruitmentForm.get('rightsOfTheEmployees')?.invalid && (editRecruitmentForm.get('rightsOfTheEmployees')?.dirty || editRecruitmentForm.get('rightsOfTheEmployees')?.touched)" class="alert">
+                    Vui Lòng Nhập Quyền Lợi Được Hưởng!
+                </div>
+            </div>
+    
+            <div class="info__widget">
+                <p>Địa Chỉ Tuyển Dụng:</p>
+                <input formControlName=address type="text"  placeholder="Địa Chỉ Tuyển Dụng...">
+                <div *ngIf="editRecruitmentForm.get('address')?.invalid && (editRecruitmentForm.get('address')?.dirty || editRecruitmentForm.get('address')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Địa Chỉ Tuyển Dụng!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Số Lượng Tuyển Dụng:</p>
+                <input formControlName='amount' type="number" placeholder="Nhập Số Lượng Tuyển Dụng...">
+                <div *ngIf="editRecruitmentForm.get('amount')?.invalid && (editRecruitmentForm.get('amount')?.dirty || editRecruitmentForm.get('amount')?.touched)" class="alert">
+                    Vui Lòng Nhập Số Lượng Tuyển Dụng!
+                </div>
+            </div> 
+
+            <div class="info__widget">
+                <p>Trạng Thái:</p>
+                <div class="sex__radio">
+                    <mat-radio-group color='primary' formControlName=complete>
+                        <mat-radio-button [checked]='complete' value=true>Hoàn Tất</mat-radio-button>
+                        <mat-radio-button [checked]='uncomplete' value=false>Chưa Hoàn Tất</mat-radio-button>
+                    </mat-radio-group>
+                </div>   
+                <div *ngIf="editRecruitmentForm.get('complete')?.invalid && (editRecruitmentForm.get('complete')?.dirty || editRecruitmentForm.get('complete')?.touched)" class="alert"> 
+                    Vui Lòng Chọn Giới Tính Học Viên!
+                </div>  
+            </div>
+
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" [disabled]='editRecruitmentForm.invalid' (click)=confirm(editRecruitmentForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner diameter=30 color='primary' strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>
+
+

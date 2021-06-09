@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="grid__container">
+        <h3>Speak! Englisk Admistrator</h3>
+        <div class="form__container">
+            <h2>Welcome Back</h2>
+            <span>Please sign in to your account below</span>
+
+            <form [formGroup]='loginForm'>
+                <div class="info__widget widget__larger">
+                    <input formControlName='userId' type="text"  placeholder="Enter Username...">
+                    <div *ngIf="loginForm.get('userId')?.invalid && (loginForm.get('userId')?.dirty || loginForm.get('userId')?.touched)" class="alert">
+                        Please Enter Username!
+                    </div>
+                </div>
+                <div class="info__widget widget__larger">
+                    <input formControlName='password' type="password"  placeholder="Enter Password...">
+                    <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="alert">
+                        Please Enter Password!
+                    </div>
+                </div>
+                <mat-dialog-actions align="end">
+                    <button class="confirm" (click)=login(loginForm.value)>
+                        <p>Login To Dashboard   </p>
+                        <mat-spinner diameter=30 color='primary' strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                    </button>
+                </mat-dialog-actions>
+            </form>   
+        </div>
+        <p>Copyright <i class="far fa-copyright"></i> by Hoàng Văn Tâm</p>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='addEmployeeForm'>
+
+            <div class="info__widget">
+                <p>Họ:</p>
+                <input formControlName=lastName type="text"  placeholder="Nhập Họ...">
+                <div *ngIf="addEmployeeForm.get('lastName')?.invalid && (addEmployeeForm.get('lastName')?.dirty || addEmployeeForm.get('lastName')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Họ Nhân Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Tên:</p>
+                <input formControlName=firstName type="text"  placeholder="Nhập Tên...">
+                <div *ngIf="addEmployeeForm.get('firstName')?.invalid && (addEmployeeForm.get('firstName')?.dirty || addEmployeeForm.get('firstName')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Tên Nhân Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Ngày Sinh:</p>
+                <div class="datePicker">
+                    <input placeholder="Chọn ngày sinh..." [matDatepicker]="picker" formControlName=birthday>
+                    <div class="icon__picker">
+                        <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker startView="multi-year" #picker></mat-datepicker>
+                    </div>             
+                </div>
+                <div *ngIf="addEmployeeForm.get('birthday')?.invalid && (addEmployeeForm.get('birthday')?.dirty || addEmployeeForm.get('birthday')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Ngày Sinh Nhân Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Giới Tính:</p>
+                <div class="sex__radio">
+                    <mat-radio-group formControlName=sex>
+                        <mat-radio-button checked value=true>Nam</mat-radio-button>
+                        <mat-radio-button value=false>Nữ</mat-radio-button>
+                    </mat-radio-group>
+                </div>   
+                <div *ngIf="addEmployeeForm.get('sex')?.invalid && (addEmployeeForm.get('sex')?.dirty || addEmployeeForm.get('sex')?.touched)" class="alert"> 
+                    Vui Lòng Chọn Giới Tính Nhân Viên!
+                </div>  
+            </div>
+
+            <div class="info__widget">
+                <p>Địa Chỉ:</p>
+                <input formControlName='address' type="text"  placeholder="Nhập Địa Chỉ...">
+                <div *ngIf="addEmployeeForm.get('address')?.invalid && (addEmployeeForm.get('address')?.dirty || addEmployeeForm.get('address')?.touched)" class="alert">
+                    Vui Lòng Nhập Địa Chỉ Nhân Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Số Điện Thoại:</p>
+                <input formControlName='phoneNumber' type="text"  placeholder="Nhập Số điện thoại..">
+                <div *ngIf="addEmployeeForm.get('phoneNumber')?.invalid && (addEmployeeForm.get('phoneNumber')?.dirty || addEmployeeForm.get('phoneNumber')?.touched)" class="alert">
+                    Vui Lòng Nhập Số Điện Thoại Nhân Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Email:</p>
+                <input formControlName='email' type="email"  placeholder="Nhập Số điện thoại..">
+                <div *ngIf="addEmployeeForm.get('email')?.invalid && (addEmployeeForm.get('email')?.dirty || addEmployeeForm.get('email')?.touched)" class="alert">
+                    Vui Lòng Nhập Số Điện Thoại Nhân Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Công Việc:</p>
+                <mat-select formControlName='role' placeholder='Chọn Công Việc'>
+                    <mat-option value="Admin">Nhân Viên Quản Lý</mat-option>
+                    <mat-option value="Teacher">Giáo Viên</mat-option>
+                </mat-select>
+                <div *ngIf="addEmployeeForm.get('departmentId')?.invalid && (addEmployeeForm.get('departmentId')?.dirty || addEmployeeForm.get('departmentId')?.touched)" class="alert">
+                    Vui Lòng Chọn Công Việc Của Nhân Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Trung Tâm:</p>
+                <mat-select formControlName='departmentId' placeholder='Chọn Trung Tâm'>
+                    <mat-option *ngFor='let departments of Department' [value]="departments.id">{{departments.name}}</mat-option>
+                </mat-select>
+                <div *ngIf="addEmployeeForm.get('departmentId')?.invalid && (addEmployeeForm.get('departmentId')?.dirty || addEmployeeForm.get('departmentId')?.touched)" class="alert">
+                    Vui Lòng Chọn Trung Tâm Của Nhân Viên!
+                </div>
+            </div>
+
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" (click)=confirm(addEmployeeForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner diameter=30 color='primary' strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>

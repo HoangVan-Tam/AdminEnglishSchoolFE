@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="title">
+      <app-title-page [titleOfPage]='titleOfPage'></app-title-page>
+    </div>
+    <div class="body">
+      <div class="body__container">
+        <div class="navbar">
+          <div class="input__area">
+            <input  type="text" name="search" [(ngModel)]="search" placeholder="Tìm Kiếm..." ><i class="fas fa-search"></i>
+          </div>
+          <button (click)="AddEvent()">Thêm Sự Kiện&nbsp; <i class="far fa-plus-square"></i></button>
+        </div>
+        <div class="body__table">
+          <table>
+              <tr>
+                <th (click)="sort('id')">Mã Event&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('title')">Tiêu Đề&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('headContent')">Giới Thiệu&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('bodyContent')">Nội Dung&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('image')">Hình Ảnh&nbsp;<i class="fas fa-sort"></i></th>
+                <th (click)="sort('postDate')">Ngày Đăng&nbsp;<i class="fas fa-sort"></i></th>
+                <!--th></th-->
+                <th></th>
+              </tr>
+              <tr *ngFor='let event of Events | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:12, currentPage: pageChanged}'>
+                <td>{{event.id}}</td>
+                <td>{{event.title}}</td>
+                <td>{{event.bodyContent}}</td>
+                <td>{{event.headContent}}</td>
+                <td>{{event.image}}</td>
+                <td>{{event.postDate | date:'dd/MM/YYYY - hh:mm aa'}}</td>
+                <!--td><button><i class="far fa-address-card"></i></button></td-->
+                <td><button (click)='OpenEditEventDialog(event)'><i class="far fa-edit"></i></button></td>
+              </tr>
+            </table>
+        </div>    
+        <div class="spinner">
+          <mat-spinner color='' diameter=50 strokeWidth=5 *ngIf='ShowSpinner'></mat-spinner>
+        </div>
+        <div class="paginate">            
+          <pagination-controls
+              class="custom__paginate"
+              [maxSize]="maxSize"
+              [directionLinks]="directionLinks"
+              [autoHide]="autoHide"
+              [responsive]="responsive"
+              [previousLabel]="labels.previousLabel"
+              [nextLabel]="labels.nextLabel"
+              [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+              [screenReaderPageLabel]="labels.screenReaderPageLabel"
+              [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" 
+              (pageChange)="pageChanged=$event">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+</div>
+

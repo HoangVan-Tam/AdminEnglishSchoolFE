@@ -1,0 +1,83 @@
+<!--div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <div class="info__widget">
+            <p>Tên Khóa Học:</p>
+            <input type="text" placeholder="Nhập Tên Khóa Học...">
+        </div>
+        <div class="info__widget">
+            <p>Thời Gian Học:</p>
+            <input type="number" placeholder="Nhập Số Tháng...">
+        </div>
+        <div class="info__widget">
+            <p>Khuyến Mãi:</p>
+            <input type="number" placeholder="Nhập Khuyến Mãi...">
+        </div>
+
+        <div class="info__widget">
+            <p>Học Phí:</p>
+            <input type="number" placeholder="Nhập Số Học Phí...">
+        </div>
+
+        <div class="info__widget">
+            <p>Ghi Chú:</p>
+            <input type="text" placeholder="...">
+        </div>    
+    </div>
+    <mat-dialog-actions align="end">
+        <button class="close"(click)=closed()>Hủy</button>
+        <button class="confirm" (click)=confirm()>Thay Đổi</button>
+    </mat-dialog-actions>
+</div-->
+
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='addDepartmentForm'>
+
+            <div class="info__widget">
+                <p>Tên Trung Tâm:</p>
+                <input formControlName=name type="text"  placeholder="Nhập Tên Trung Tâm...">
+                <div *ngIf="addDepartmentForm.get('name')?.invalid && (addDepartmentForm.get('name')?.dirty || addDepartmentForm.get('name')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Tên Trung Tâm!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Thành Phố:</p>
+                <input formControlName='city' type="text"  placeholder="Nhập Thành Phố...">
+                <div *ngIf="addDepartmentForm.get('city')?.invalid && (addDepartmentForm.get('city')?.dirty || addDepartmentForm.get('city')?.touched)" class="alert">
+                    Vui Lòng Nhập Thành Phố!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Địa Chỉ:</p>
+                <input formControlName='address' type="text" placeholder="Nhập Địa Chỉ...">
+                <div *ngIf="addDepartmentForm.get('address')?.invalid && (addDepartmentForm.get('address')?.dirty || addDepartmentForm.get('address')?.touched)" class="alert">
+                    Vui Lòng Nhập Địa Chỉ!
+                </div>
+            </div>
+    
+            <div class="info__widget" style="height: 280px;">
+                <p>Thông Tin Chi Tiết:</p>
+                <textarea style="height: 260px;" rows="5" cols="100" formControlName='detail' type="text" placeholder="Thông Tin Chi Tiết..."></textarea>
+                <div *ngIf="addDepartmentForm.get('detail')?.invalid && (addDepartmentForm.get('detail')?.dirty || addDepartmentForm.get('detail')?.touched)" class="alert">
+                    Vui Lòng Nhập Thông Tin Chi Tiết!
+                </div>
+            </div>
+            
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" (click)=confirm(addDepartmentForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner color='primary' diameter=30 strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>

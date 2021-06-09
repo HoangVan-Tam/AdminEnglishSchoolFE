@@ -1,0 +1,48 @@
+
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='addEventForm'>
+
+            <div class="info__widget">
+                <p>Tiêu Đề Sự Kiện:</p>
+                <input formControlName=title type="text"  placeholder="Nhập Tiêu Đề Sự Kiện...">
+                <div *ngIf="addEventForm.get('title')?.invalid && (addEventForm.get('title')?.dirty || addEventForm.get('title')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Tiêu Đề Sự Kiện!
+                </div>
+            </div>
+
+            <div class="info__widget" style="height: 400px;">
+                <p>Giới Thiệu:</p>
+                <textarea rows="50" formControlName='headContent' type="number" placeholder="Nhập Chi Tiết Sự Kiện..."></textarea>
+                <div *ngIf="addEventForm.get('headContent')?.invalid && (addEventForm.get('headContent')?.dirty || addEventForm.get('headContent')?.touched)" class="alert">
+                    Vui Lòng Nhập Chi Tiết Sự Kiện!
+                </div>
+            </div>
+
+            <div class="info__widget" style="height: 400px;">
+                <p>Nội Dung:</p>
+                <textarea rows="50" formControlName='bodyContent' type="number" placeholder="Nhập Chi Tiết Sự Kiện..."></textarea>
+                <div *ngIf="addEventForm.get('bodyContent')?.invalid && (addEventForm.get('bodyContent')?.dirty || addEventForm.get('bodyContent')?.touched)" class="alert">
+                    Vui Lòng Nhập Chi Tiết Sự Kiện!
+                </div>
+            </div>
+
+            <div class="info__widget" style="height: 200px;">
+                <p>Hình Ảnh:</p>
+                <img [src]="imageUrl"  alt="" style="height: 150px; width: 150px;">
+                <input formControlName='image' (change)="processFile($event)" type="file" accept="image/*" placeholder="Chọn Ảnh..." >
+            </div>
+            
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" (click)=confirm(addEventForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner color='primary' diameter=30 strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>
