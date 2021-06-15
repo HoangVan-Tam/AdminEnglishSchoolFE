@@ -1,5 +1,4 @@
 import { Department } from "./department.model"
-import { Parent } from "./parent.model"
 
 export class Student { 
     studentId!: string
@@ -17,6 +16,5 @@ export class Student {
     departmentId!: number
     parentId!: number
     departments!:Department
-    parents!:Parent
 } 
 

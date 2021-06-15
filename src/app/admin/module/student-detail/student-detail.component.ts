@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddRegisterCourseDialogComponent } from './add-registercourse-dialog/add-registercourse-dialog.component';
-import { AddParentDialogComponent } from './add-parent-dialog/add-parent-dialog.component';
 import { EditScoreDialogComponent } from './edit-score-dialog/edit-score-dialog.component';
 import { StudentDetailService } from '../../../services/student-detail/student-detail.service';
 import { Student } from 'src/app/classes/student.model';
@@ -52,9 +51,6 @@ export class StudentDetailComponent implements OnInit {
         this.ShowSpinnerInfo=false
         document.getElementsByClassName('detail__container')[0].classList.remove('hide')
         this.Student=res
-        if(res.parents?.parentId!=null){
-          this.CheckParent=false
-        }
       }
     )
     this.dataService.GetAllCourseOfStudent(id).subscribe(
@@ -76,24 +72,6 @@ export class StudentDetailComponent implements OnInit {
     this.reverse=!this.reverse
   }
 
-  openDialogAddParent(){
-    const dialogRef=this.dialog.open(AddParentDialogComponent,{
-      width:"70%",
-      height:"90vh",
-      data:{
-        studentId:this.Student.studentId,
-      }
-    });
-    dialogRef.afterClosed().subscribe(
-      res=>{
-        console.log(res);
-        
-        if(res!=null){
-          this.ngOnInit()
-        }
-      }
-    )
-  }
   openDialogRegisterCourse(){
     const dialogRef=this.dialog.open(AddRegisterCourseDialogComponent, {
       width:"90%",

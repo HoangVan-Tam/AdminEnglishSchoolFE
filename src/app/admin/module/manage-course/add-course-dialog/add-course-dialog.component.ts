@@ -20,11 +20,11 @@ export class AddCourseDialogComponent implements OnInit {
     title: new FormControl('', Validators.required),
     headContent:new FormControl('', Validators.required),
     bodyContent: new FormControl('', Validators.required),
-    numberOfMonths: new FormControl('',Validators.required),
+    numberOfWeeks: new FormControl('',Validators.required),
     tuition: new FormControl('',Validators.required),
     note: new FormControl(''),
     discount: new FormControl('',Validators.required),
-    schedule1: new FormControl('',Validators.required),
+    /*schedule1: new FormControl('',Validators.required),
     timeStart1: new FormControl('',Validators.required),
     timeEnd1: new FormControl('',Validators.required),
     schedule2: new FormControl('',Validators.required),
@@ -32,9 +32,9 @@ export class AddCourseDialogComponent implements OnInit {
     timeEnd2: new FormControl('',Validators.required),
     schedule3: new FormControl(''),
     timeStart3: new FormControl(''),
-    timeEnd3: new FormControl(''),
+    timeEnd3: new FormControl(''),*/
     theOpeningDay: new FormControl('',Validators.required),
-    departmentId: new FormControl('',Validators.required),
+    //departmentId: new FormControl('',Validators.required),
   })
   Department!:Department[]
   Course!:Course

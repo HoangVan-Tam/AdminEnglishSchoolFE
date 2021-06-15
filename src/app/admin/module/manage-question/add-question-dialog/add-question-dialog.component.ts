@@ -52,8 +52,8 @@ export class AddQuestionDialogComponent implements OnInit {
       this._dataService.AddQuestion(Question).subscribe(
         res=>{
           this.ShowSpinner=false
-          this.dialogRef.close(res);
           alert('Thêm Câu Hỏi Thành Công')
+          this.dialogRef.close(res)
         },
         err=>{
           alert(err)

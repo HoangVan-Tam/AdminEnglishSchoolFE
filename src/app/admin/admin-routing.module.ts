@@ -10,9 +10,9 @@ const routes: Routes=[{
     component:AdminComponent,
     children:[
         { path: 'student', loadChildren: () => import('../admin/module/manage-student/manage-student.module').then(m => m.ManageStudentModule), canActivate:[AuthGuard], },
-        { path: 'parent', loadChildren: () => import('../admin/module/manage-parent/manage-parent.module').then(m => m.ManageParentModule), canActivate:[AuthGuard], },
         { path: 'recruitment', loadChildren: () => import('../admin/module/manage-recruitment/manage-recruitment.module').then(m => m.ManageRecruitmentModule), canActivate:[AuthGuard], },
         { path: 'department', loadChildren: () => import('./module/manage-department/manage-department.module').then(m => m.ManageDepartmentModule), canActivate:[AuthGuard], },
+        { path: 'class', loadChildren: () => import('./module/manage-class/manage-class.module').then(m => m.ManageClassModule), canActivate:[AuthGuard], },
         { path: 'event', loadChildren: () => import('./module/manage-event/manage-event.module').then(m => m.ManageEventModule), canActivate:[AuthGuard], },
         { path: 'advisory', loadChildren: () => import('./module/manage-advisory/manage-advisory.module').then(m => m.ManageAdvisoryModule), canActivate:[AuthGuard], },
         { path: 'course', loadChildren: () => import('./module/manage-course/manage-course.module').then(m => m.ManageCourseModule), canActivate:[AuthGuard], },

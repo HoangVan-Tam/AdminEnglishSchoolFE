@@ -10,7 +10,11 @@ export class ManageAdvisoryService {
   BaseUrl="https://englishschool.azurewebsites.net/api/advisory/"
   constructor(private _http:HttpClient) { }
 
-  GetAllCourse(){
+  GetAllAdvisory(){
     return this._http.get<Advisory[]>(this.BaseUrl+"all")
+  }
+
+  UpdateAdvisory(advisory:any){
+    return this._http.put<any>(this.BaseUrl+"update", advisory)
   }
 }

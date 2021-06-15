@@ -93,10 +93,20 @@
             <div class="info__widget">
                 <p>Khóa Học Đăng Ký:</p>
                 <mat-select formControlName='courseId' placeholder='Chọn Khóa Học'>
-                    <mat-option *ngFor='let courses of Course' [value]="courses.id">{{courses.name}}</mat-option>
+                    <mat-option (click)=SearchClass(courses.id) *ngFor='let courses of Course' [value]="courses.id">{{courses.name}}</mat-option>
                 </mat-select>
                 <div *ngIf="addStudentForm.get('courseId')?.invalid && (addStudentForm.get('courseId')?.dirty || addStudentForm.get('courseId')?.touched)" class="alert">
                     Vui Lòng Chọn Khóa Học Đăng Ký Của Học Viên!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Lớp Học Đăng Ký:</p>
+                <mat-select formControlName='classId' placeholder='Chọn Lớp Học'>
+                    <mat-option *ngFor='let classes of Class' [value]="classes.id">{{classes.name}}</mat-option>
+                </mat-select>
+                <div *ngIf="addStudentForm.get('classId')?.invalid && (addStudentForm.get('classId')?.dirty || addStudentForm.get('classId')?.touched)" class="alert">
+                    Vui Lòng Chọn Lớp Học Đăng Ký Của Học Viên!
                 </div>
             </div>
 

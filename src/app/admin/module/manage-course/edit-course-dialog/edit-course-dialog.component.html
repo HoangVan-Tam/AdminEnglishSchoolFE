@@ -42,8 +42,8 @@
 
             <div class="info__widget">
                 <p>Số Tuần Học:</p>
-                <input formControlName='numberOfMonths' type="number"  placeholder="Nhập Thời Gian Học...">
-                <div *ngIf="editCourseForm.get('numberOfMonths')?.invalid && (editCourseForm.get('numberOfMonths')?.dirty || editCourseForm.get('numberOfMonths')?.touched)" class="alert">
+                <input formControlName='numberOfWeeks' type="number"  placeholder="Nhập Thời Gian Học...">
+                <div *ngIf="editCourseForm.get('numberOfWeeks')?.invalid && (editCourseForm.get('numberOfWeeks')?.dirty || editCourseForm.get('numberOfWeeks')?.touched)" class="alert">
                     Vui Lòng Nhập Thời Gian Học!
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="info__widget">
+            <!--div class="info__widget">
                 <div style="display: flex; width: 100%; justify-content: space-between;">
                     <div class="widget__item">
                         <p>Buổi 1:</p>
@@ -135,7 +135,7 @@
                 <div *ngIf="editCourseForm.get('schedule1')?.invalid && (editCourseForm.get('schedule1')?.dirty || editCourseForm.get('schedule1')?.touched)" class="alert">
                     Vui Lòng Điền Đầy Đủ Thông Tin Ngày Học Thứ 1 Và 2!
                 </div>
-            </div>
+            </div-->
 
             <div class="info__widget">
                 <p>Ngày Khai Giảng:</p>

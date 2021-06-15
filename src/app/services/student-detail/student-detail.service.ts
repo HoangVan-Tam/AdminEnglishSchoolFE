@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from 'src/app/classes/course.model';
 import { CourseDetail } from 'src/app/classes/coursedetail.model';
-import { Parent } from 'src/app/classes/parent.model';
 import { ScoreResult } from 'src/app/classes/scoreresult.model';
 import { Student } from 'src/app/classes/student.model';
 import { __param } from 'tslib';
@@ -20,7 +19,7 @@ export class StudentDetailService {
   }
 
   GetAllCourseOfStudent(id:string){
-    return this._http.get<CourseDetail[]>(this.BaseUrl+'CourseDetail/all/course/'+id)
+    return this._http.get<CourseDetail[]>(this.BaseUrl+'classDetail/all/'+id)
   }
 
   GetAllScoreOfStudent(id:number){

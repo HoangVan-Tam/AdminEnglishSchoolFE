@@ -9,7 +9,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { TitlePageModule } from '../../component/title-page/title-page.module';
 import {MatDialogModule} from '@angular/material/dialog';
-import { AddParentDialogComponent } from './add-parent-dialog/add-parent-dialog.component';
 import { AddRegisterCourseDialogComponent } from './add-registercourse-dialog/add-registercourse-dialog.component'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -22,7 +21,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { ManageCourseService } from '../../../services/manage-course/manage-course.service';
 import { ManageStudentService } from '../../../services/manage-student/manage-student.service';
-import { ManageParentService } from 'src/app/services/manage-parent/manage-parent.service';
 import { httpInterceptorProviders } from 'src/app/services/http-interceptors';
 
 @NgModule({
@@ -30,7 +28,6 @@ import { httpInterceptorProviders } from 'src/app/services/http-interceptors';
     StudentDetailComponent, 
     AddRegisterCourseDialogComponent,
     EditScoreDialogComponent,
-    AddParentDialogComponent
   ],
   imports: [
     FormsModule,
@@ -50,7 +47,7 @@ import { httpInterceptorProviders } from 'src/app/services/http-interceptors';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers:[httpInterceptorProviders, StudentDetailService, ManageCourseService, ManageStudentService, ManageParentService],
+  providers:[httpInterceptorProviders, StudentDetailService, ManageCourseService, ManageStudentService],
   //exports:[AddParentDialogComponent]
 })
 export class ManageStudentModule { }

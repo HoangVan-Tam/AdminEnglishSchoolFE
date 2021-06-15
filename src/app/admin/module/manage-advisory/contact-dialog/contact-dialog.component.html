@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="title">
+        <app-title-page [titleOfPage]='titleOfPage'></app-title-page>
+    </div>
+
+    <div class="body__info">
+        <img src="./assets/img/advisory-logo.png" alt="">
+        <div class="info">
+            <p style="font-size: 2.5rem; font-weight: 500;">Họ Tên: {{data.advisory.name}}</p>
+            <p style="font-size: 2rem; margin-top: 10px;">Số Điện Thoại: {{data.advisory.phoneNumber}}</p>
+            <p style="font-size: 2rem; margin-top: 10px;">Email: {{data.advisory.email}}</p>
+            <p style="font-size: 2rem; margin-top: 10px;">Ngày Đăng Ký: {{data.advisory.note}}</p>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <button class="close"(click)=closed()>Hủy</button>
+        <button class="confirm alternate-theme" (click)=confirm()>
+            <p>Xong</p>
+            <mat-spinner color='primary' diameter=30 strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+        </button>
+    </mat-dialog-actions>
+</div>

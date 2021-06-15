@@ -18,10 +18,9 @@
               <th (click)="sort('title')">Tiêu Đề&nbsp;<i class="fas fa-sort"></i></th>
               <th (click)="sort('headContent')">Giới Thiệu&nbsp;<i class="fas fa-sort"></i></th>
               <th (click)="sort('bodyContent')">Chi tiết&nbsp;<i class="fas fa-sort"></i></th>
-              <th (click)="sort('numberOfMonths')">Thời Gian Học&nbsp;<i class="fas fa-sort"></i></th>
+              <th (click)="sort('numberOfWeeks')">Thời Gian Học&nbsp;<i class="fas fa-sort"></i></th>
               <th (click)="sort('discount')">Khuyến Mãi&nbsp;<i class="fas fa-sort"></i></th>
               <th (click)="sort('tuition')">Học Phí&nbsp;<i class="fas fa-sort"></i></th>
-              <th (click)="sort('schedules')">Số Ngày Học&nbsp;<i class="fas fa-sort"></i></th>
               <th (click)="sort('theOpeningDay')">Ngày Khai Giảng&nbsp;<i class="fas fa-sort"></i></th>
               <th></th>
             </tr>
@@ -31,10 +30,9 @@
               <td>{{courses.title}}</td>
               <td>{{courses.headContent}}</td>
               <td>{{courses.bodyContent}}</td>
-              <td>{{courses.numberOfMonths}}</td>
-              <td>{{courses.discount}}</td>
+              <td>{{courses.numberOfWeeks}} Tuần</td>
+              <td>{{courses.discount}}%</td>
               <td>{{courses.tuition}}</td>
-              <td>{{courses.schedules.length}}</td>
               <td>{{courses.theOpeningDay | date:'dd/MM/YYYY - hh:mm aa'}}</td>
               <td><button (click)="OpenEditCourseDialog(courses)"><i class="far fa-edit"></i></button></td>
             </tr>

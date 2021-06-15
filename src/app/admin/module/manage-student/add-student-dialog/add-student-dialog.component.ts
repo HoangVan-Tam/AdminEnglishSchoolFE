@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Course } from 'src/app/classes/course.model';
 import { Department } from 'src/app/classes/department.model';
+import { ManageClassService } from 'src/app/services/manage-class/manage-course.service';
 import { ManageCourseService } from 'src/app/services/manage-course/manage-course.service';
 import { ManageDepartmentService } from 'src/app/services/manage-department/manage-department.service';
 import { ManageStudentService } from '../../../../services/manage-student/manage-student.service';
@@ -25,16 +26,19 @@ export class AddStudentDialogComponent implements OnInit {
     level: new FormControl('',Validators.required),
     departmentId: new FormControl('',Validators.required),
     courseId: new FormControl('',Validators.required),
+    classId:new FormControl('',Validators.required)
   })
   picker=true
   ShowSpinner=false;
-
+  Class!:any[]
+  Temp!:any[]
   Department:Department[]=[]
   Course:Course[]=[]
   constructor(
     private dataDepartmentService:ManageDepartmentService,
     private dataCourseService: ManageCourseService,
     private dataService:ManageStudentService,
+    private dataClassService:ManageClassService,
     private dialogRef: MatDialogRef<AddStudentDialogComponent>,) { 
     }
 
@@ -49,6 +53,16 @@ export class AddStudentDialogComponent implements OnInit {
         this.Course=res
       }
     )
+    this.dataClassService.GetAllClass().subscribe(
+        res=>{ 
+          this.Temp=res;
+          console.log(this.Temp);
+          
+        }
+      )      
+  }
+  SearchClass(id:any){
+    this.Class=this.Temp.filter(p=>p.courseId==id && p.departmentId==this.addStudentForm.get("departmentId")?.value)   
   }
   confirm(student:any){
     document.getElementsByTagName('p')[document.getElementsByTagName('p').length-1].style.display='inline' 

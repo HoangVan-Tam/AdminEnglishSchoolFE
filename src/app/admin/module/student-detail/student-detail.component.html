@@ -40,14 +40,6 @@
                     <p class="title__info">SĐT: </p>&nbsp;
                     <p class="info">{{Student.phoneNumber}}</p>
                 </div> 
-                <div class="info__widget">
-                    <p class="title__info">Mã Phụ Huynh: </p>&nbsp;
-                    <p class="info">{{Student.parents?.parentId}}</p>
-                </div>
-                <div class="info__widget info__name">
-                    <p class="title__info">Phụ Huynh: </p>&nbsp;
-                    <p class="info">{{Student.parents?.lastName}} {{Student.parents?.firstName}}</p>
-                </div>
                 <div class="info__widget info__name">
                     <p class="title__info">Email: </p>&nbsp;
                     <p class="info">{{Student.email}}</p>
@@ -85,10 +77,10 @@
                     <th></th-->
                 </tr>
                 <tr *ngFor='let details of DetailCourseStudent | orderBy: key: reverse | filter : search | paginate : {itemsPerPage:6, currentPage: pageChanged}'>
-                    <td>{{details.courses.name}}</td>
-                    <td>{{details.courses.schedules[0].day}} | {{details.courses.schedules[0].timeStart}}-{{details.courses.schedules[0].timeEnd}} 
-                        <br>{{details.courses.schedules[1].day}} | {{details.courses.schedules[1].timeStart}}-{{details.courses.schedules[1].timeEnd}}
-                        <br>{{details.courses.schedules[2]?.day}} | {{details.courses.schedules[2]?.timeStart}}-{{details.courses.schedules[2]?.timeEnd}}
+                    <td>{{details.classes.name}}</td>
+                    <td>{{details.classes.schedules[0]?.day}} | {{details.classes.schedules[0]?.timeStart}}-{{details.classes.schedules[0]?.timeEnd}} 
+                        <br>{{details.classes.schedules[1]?.day}} | {{details.classes.schedules[1]?.timeStart}}-{{details.classes.schedules[1]?.timeEnd}}
+                        <br>{{details.classes.schedules[2]?.day}} | {{details.classes.schedules[2]?.timeStart}}-{{details.classes.schedules[2]?.timeEnd}}
                     </td>
                     <td>{{details.dayStart | date:'dd/MM/YYYY'}}</td>
                     <td>{{details.dayFinish | date:'dd/MM/YYYY'}}</td>

@@ -16,9 +16,9 @@
             <div class="info__widget">
                 <p>Mức Độ:</p>
                 <mat-select formControlName='level' placeholder='Chọn Khóa Học'>
-                    <mat-option value='A'>Khó</mat-option>
-                    <mat-option value='B'>Vừa</mat-option>
-                    <mat-option value='C'>Dễ</mat-option>
+                    <mat-option value='Khó'>Khó</mat-option>
+                    <mat-option value='Vừa'>Vừa</mat-option>
+                    <mat-option value='Dễ'>Dễ</mat-option>
                 </mat-select>
                 <div *ngIf="addQuestionForm.get('level')?.invalid && (addQuestionForm.get('level')?.dirty || addQuestionForm.get('level')?.touched)" class="alert">
                     Vui Lòng Chọn Mức Độ Câu Hỏi!

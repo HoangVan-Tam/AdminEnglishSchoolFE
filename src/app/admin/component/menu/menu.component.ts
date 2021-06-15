@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { SignalService } from 'src/app/services/signalR/signal.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  AdvisoryHub!:any
+  canSendMessage!: Boolean;
+  constructor(
+    private _signalRService: SignalService,
+    private _ngZone: NgZone){ 
+      this.subscribeToEvents();
+      this.canSendMessage = _signalRService.connectionExists;
+  }
+  subscribeToEvents() {
+    var self = this;
 
+    // if connection exists it can call of method.  
+    this._signalRService.connectionEstablished.subscribe(() => {
+      this.canSendMessage = true;
+    });
+  }
   ngOnInit(): void {
   }
   alert(){

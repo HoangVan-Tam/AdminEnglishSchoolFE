@@ -18,11 +18,11 @@ export class EditCourseDialogComponent implements OnInit {
     title: new FormControl(this.data.courses.title, Validators.required),
     headContent:new FormControl(this.data.courses.headContent, Validators.required),
     bodyContent: new FormControl(this.data.courses.bodyContent, Validators.required),
-    numberOfMonths: new FormControl(this.data.courses.numberOfMonths,Validators.required),
+    numberOfWeeks: new FormControl(this.data.courses.numberOfMonths,Validators.required),
     tuition: new FormControl(this.data.courses.tuition,Validators.required),
     note: new FormControl(this.data.courses.note),
     discount: new FormControl(this.data.courses.discount,Validators.required),
-    schedule1: new FormControl(this.data.courses.schedules[0]?.day,Validators.required),
+    /*schedule1: new FormControl(this.data.courses.schedules[0]?.day,Validators.required),
     timeStart1: new FormControl(this.data.courses.schedules[0]?.timeStart,Validators.required),
     timeEnd1: new FormControl(this.data.courses.schedules[0]?.timeEnd,Validators.required),
     schedule2: new FormControl(this.data.courses.schedules[1]?.day,Validators.required),
@@ -30,9 +30,9 @@ export class EditCourseDialogComponent implements OnInit {
     timeEnd2: new FormControl(this.data.courses.schedules[1]?.timeEnd,Validators.required),
     schedule3: new FormControl(this.data.courses.schedules[2]?.day),
     timeStart3: new FormControl(this.data.courses.schedules[2]?.timeStart),
-    timeEnd3: new FormControl(this.data.courses.schedules[2]?.timeEnd),
+    timeEnd3: new FormControl(this.data.courses.schedules[2]?.timeEnd),*/
     theOpeningDay: new FormControl(this.data.courses.theOpeningDay,Validators.required),
-    departmentId: new FormControl(this.data.courses.departmentId,Validators.required),
+    //departmentId: new FormControl(this.data.courses.departmentId,Validators.required),
   })
   Schedule!:Schedule[]
   ShowSpinner=false
@@ -49,13 +49,13 @@ export class EditCourseDialogComponent implements OnInit {
       this.editCourseForm.markAllAsTouched()
     }
     else{
-      this.Schedule=[]
+      /*this.Schedule=[]
       this.Schedule.push({courseId:this.data.courses.schedules[0].courseId, scheduleId:this.data.courses.schedules[0].scheduleId, day:course.schedule1, timeStart:course.timeStart1, timeEnd: course.timeEnd1})
       this.Schedule.push({courseId:this.data.courses.schedules[1].courseId, scheduleId:this.data.courses.schedules[1].scheduleId, day:course.schedule2, timeStart:course.timeStart2, timeEnd: course.timeEnd2})
       if(course.schedule3!=null){
         this.Schedule.push({courseId:this.data.courses.schedules[2]?.courseId, scheduleId:this.data.courses.schedules[2]?.scheduleId, day:course.schedule3, timeStart:course.timeStart3, timeEnd: course.timeEnd3})
       }
-      course.schedules=this.Schedule
+      course.schedules=this.Schedule*/
       document.getElementsByTagName('p')[document.getElementsByTagName('p').length-1].style.display='none'  
       this.ShowSpinner=true
       course.id=this.data.courses.id

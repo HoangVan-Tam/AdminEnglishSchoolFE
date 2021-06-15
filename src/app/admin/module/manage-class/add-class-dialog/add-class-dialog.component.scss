@@ -1,0 +1,110 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.title{
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color:white;
+    width: 98%;
+}
+.body__container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+}
+.info__widget{
+    margin-top: 20px;
+    width: 90%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    p{  
+        font-size: 1.6rem;
+        font-weight: 400;
+        width: fit-content;
+        text-align: right;
+        margin: 0;
+        color: darkslategrey;
+    }
+    input{
+        border-radius: 5px;
+        font-size: 1.8rem;
+        width: 100% ;
+        padding: 5px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid black;
+        height: 40px !important;
+    }
+    input:focus,
+    textarea:focus{
+        border: 2px solid #3A6794;
+    }
+    input:disabled{
+        background-color: whitesmoke;
+    }
+    .alert{
+            color: red;
+            font-size: 1.2rem;
+    }
+    textarea{
+        border-radius: 5px;
+        font-size: 1.8rem;
+        width: 100% ;
+        padding: 5px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid black;
+        height: 280px;
+    }
+}
+.selectItem{
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+}
+.widget__item{
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+}
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px darkslategray;
+    cursor: pointer;
+    outline: none;
+    margin: 0 20px 0 0;
+    width: 80px;
+    height: 35px;
+    border: none;
+    p{
+        margin: 0;
+        text-align: center;
+    }
+}
+button:hover{
+    box-shadow: 2px 2px 2px 2px darkslategray;
+    height: 40px;
+    width: 80px;
+}
+button:active{
+    box-shadow: 1px 1px 1px 1px darkslategray; 
+}
+.confirm{
+    background-color: #3A6794;
+    color: white;
+}

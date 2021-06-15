@@ -13,10 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from 'src/app/services/http-interceptors';
 import { ManageAdvisoryRoutingModule } from './manage-advisory-routing.module';
 import { ManageAdvisoryService } from 'src/app/services/manage-advisory/manage-advisory.service';
+import { SignalService } from 'src/app/services/signalR/signal.service';
+import { ContactDialogComponent } from './contact-dialog/contact-dialog.component';
 
 
 @NgModule({
   declarations: [
+    ContactDialogComponent,
     ManageAdvisoryComponent,
   ],
   imports: [
@@ -31,7 +34,8 @@ import { ManageAdvisoryService } from 'src/app/services/manage-advisory/manage-a
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
   ],
-  providers:[httpInterceptorProviders, ManageAdvisoryService]
+  providers:[httpInterceptorProviders, ManageAdvisoryService, SignalService]
 })
 export class ManageAdvisoryModule { }

@@ -1,0 +1,130 @@
+
+<div class="container">
+    <div class="title">    
+        <app-title-page [titleOfPage]="titleOfPage"></app-title-page>
+    </div>
+    <div class="body__container">
+        <form [formGroup]='editClassForm'>
+
+            <div class="info__widget">
+                <p>Tên Lớp Học:</p>
+                <input formControlName=name type="text"  placeholder="Nhập Tên Lớp Học...">
+                <div *ngIf="editClassForm.get('name')?.invalid && (editClassForm.get('name')?.dirty || editClassForm.get('name')?.touched)" class="alert"> 
+                    Vui Lòng Nhập Tên Lớp Học!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Trung Tâm:</p>
+                <mat-select formControlName='departmentId' placeholder='Chọn Trung Tâm'>
+                    <mat-option *ngFor='let departments of Department' [value]="departments.id">{{departments.name}}</mat-option>
+                </mat-select>
+                <div *ngIf="editClassForm.get('departmentId')?.invalid && (editClassForm.get('departmentId')?.dirty || editClassForm.get('departmentId')?.touched)" class="alert">
+                    Vui Lòng Chọn Trung Tâm Của Lớp Học!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <p>Khóa Học:</p>
+                <mat-select formControlName='courseId' placeholder='Chọn Khóa Học'>
+                    <mat-option *ngFor='let courses of Course' [value]="courses.id">{{courses.name}}</mat-option>
+                </mat-select>
+                <div *ngIf="editClassForm.get('courseId')?.invalid && (editClassForm.get('courseId')?.dirty || editClassForm.get('courseId')?.touched)" class="alert">
+                    Vui Lòng Chọn Trung Tâm Của Lớp Học!
+                </div>
+            </div>
+
+            <div class="info__widget">
+                <div style="display: flex; width: 100%; justify-content: space-between;">
+                    <div class="widget__item">
+                        <p>Buổi 1:</p>
+                        <div style="width: 100%; display: flex; align-items: center;">
+                            <div class="selectItem">
+                                <mat-select formControlName='schedule1' placeholder='Ngày Học Trong Tuần'>
+                                    <mat-option value="T2">Thứ 2</mat-option>
+                                    <mat-option value="T3">Thứ 3</mat-option>
+                                    <mat-option value="T4">Thứ 4</mat-option>
+                                    <mat-option value="T5">Thứ 5</mat-option>
+                                    <mat-option value="T6">Thứ 6</mat-option>
+                                    <mat-option value="T7">Thứ 7</mat-option>
+                                    <mat-option value="CN">Chủ Nhật</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeStart1 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeEnd1 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget__item">
+                        <p>Buổi 2:</p>
+                        <div style="width: 100%; display: flex; align-items: center;">
+                            <div class="selectItem">
+                                <mat-select formControlName='schedule2' placeholder='Ngày Học Trong Tuần'>
+                                    <mat-option value="T3">Thứ 3</mat-option>
+                                    <mat-option value="T4">Thứ 4</mat-option>
+                                    <mat-option value="T5">Thứ 5</mat-option>
+                                    <mat-option value="T6">Thứ 6</mat-option>
+                                    <mat-option value="T7">Thứ 7</mat-option>
+                                    <mat-option value="CN">Chủ Nhật</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeStart2 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeEnd2 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="widget__item">
+                        <p>Buổi 3:</p>
+                        <div style="width: 100%; display: flex; align-items: center;">
+                            <div class="selectItem">
+                                <mat-select formControlName='schedule3' placeholder='Ngày Học Trong Tuần'>
+                                    <mat-option value="T4">Thứ 4</mat-option>
+                                    <mat-option value="T5">Thứ 5</mat-option>
+                                    <mat-option value="T6">Thứ 6</mat-option>
+                                    <mat-option value="T7">Thứ 7</mat-option>
+                                    <mat-option value="CN">Chủ Nhật</mat-option>
+                                </mat-select>
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeStart3 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                            <div class="selectItem" style="margin-left: 5px;">
+                                <input formControlName=timeEnd3 type="time" placeholder="Thời Gian Học..">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div *ngIf="editClassForm.get('schedule1')?.invalid && (editClassForm.get('schedule1')?.dirty || editClassForm.get('schedule1')?.touched)" class="alert">
+                    Vui Lòng Điền Đầy Đủ Thông Tin Ngày Học Thứ 1 Và 2!
+                </div>
+            </div>
+            
+            
+            <div class="info__widget">
+                <p>Giáo Viên:</p>
+                <mat-select formControlName='teacherId' placeholder='Chọn Giáo Viên'>
+                    <mat-option *ngFor='let teachers of Teacher' [value]="teachers.userId">{{teachers.lastName}} {{teachers.firstName}}</mat-option>
+                </mat-select>
+                <div *ngIf="editClassForm.get('teacherId')?.invalid && (editClassForm.get('teacherId')?.dirty || editClassForm.get('teacherId')?.touched)" class="alert">
+                    Vui Lòng Chọn Giáo Viên Của Lớp Học!
+                </div>
+            </div>
+            
+            <mat-dialog-actions align="end">
+                <button class="close"(click)=closed()>Hủy</button>
+                <button class="confirm alternate-theme" (click)=confirm(editClassForm.value)>
+                    <p>Xác Nhận</p>
+                    <mat-spinner color='primary' diameter=30 strokeWidth=3 *ngIf='ShowSpinner'></mat-spinner>
+                </button>
+            </mat-dialog-actions>
+        </form>  
+    </div>   
+</div>

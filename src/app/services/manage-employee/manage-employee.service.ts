@@ -25,4 +25,8 @@ export class ManageEmployeeService {
   GetEmployee(userId:any){
     return this._http.get<Employee>(this.BaseUrl+userId)
   }
+
+  GetAllTeacherByDepartmentId(departmentId:any){
+    return this._http.get<Employee[]>(this.BaseUrl+"all/"+departmentId)
+  }
 }
