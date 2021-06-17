@@ -18,7 +18,7 @@ export class EditCourseDialogComponent implements OnInit {
     title: new FormControl(this.data.courses.title, Validators.required),
     headContent:new FormControl(this.data.courses.headContent, Validators.required),
     bodyContent: new FormControl(this.data.courses.bodyContent, Validators.required),
-    numberOfWeeks: new FormControl(this.data.courses.numberOfMonths,Validators.required),
+    numberOfWeeks: new FormControl(this.data.courses.numberOfWeeks,Validators.required),
     tuition: new FormControl(this.data.courses.tuition,Validators.required),
     note: new FormControl(this.data.courses.note),
     discount: new FormControl(this.data.courses.discount,Validators.required),
@@ -47,6 +47,7 @@ export class EditCourseDialogComponent implements OnInit {
   confirm(course:any){
     if(this.editCourseForm.invalid){
       this.editCourseForm.markAllAsTouched()
+      document.getElementsByTagName('p')[document.getElementsByTagName('p').length-1].style.display='inline'
     }
     else{
       /*this.Schedule=[]

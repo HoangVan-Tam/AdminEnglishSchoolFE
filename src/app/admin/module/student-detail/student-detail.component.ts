@@ -55,6 +55,8 @@ export class StudentDetailComponent implements OnInit {
     )
     this.dataService.GetAllCourseOfStudent(id).subscribe(
       res=>{
+        console.log(res);
+        
         this.ShowSpinner=false
         this.DetailCourseStudent=res
       },

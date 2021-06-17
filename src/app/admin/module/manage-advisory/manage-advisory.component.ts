@@ -67,7 +67,7 @@ export class ManageAdvisoryComponent implements OnInit {
       }
     )
   }
-  key:string='courseId'
+  key:string='note'
   reverse:boolean=false
   sort(key:any){
     this.key=key

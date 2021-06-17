@@ -69,6 +69,7 @@
                 <tr>
                     <th (click)="sort('courses.name')">Tên KH&nbsp;<i class="fas fa-sort"></i></th>
                     <th (click)="sort('courses.schedule')">Lịch Học&nbsp;<i class="fas fa-sort"></i></th>
+                    <th (click)="sort('department')">Trung Tâm&nbsp;<i class="fas fa-sort"></i></th>
                     <th (click)="sort('dayStart')">Ngày Bắt Đầu&nbsp;<i class="fas fa-sort"></i></th>
                     <th (click)="sort('dayFinish')">Ngày Kết Thúc&nbsp;<i class="fas fa-sort"></i></th>
                     <th (click)="sort('tuition')">Tiền Đóng Học Phí&nbsp;<i class="fas fa-sort"></i></th>
@@ -82,6 +83,7 @@
                         <br>{{details.classes.schedules[1]?.day}} | {{details.classes.schedules[1]?.timeStart}}-{{details.classes.schedules[1]?.timeEnd}}
                         <br>{{details.classes.schedules[2]?.day}} | {{details.classes.schedules[2]?.timeStart}}-{{details.classes.schedules[2]?.timeEnd}}
                     </td>
+                    <td>{{details.classes.departments.name}}</td>
                     <td>{{details.dayStart | date:'dd/MM/YYYY'}}</td>
                     <td>{{details.dayFinish | date:'dd/MM/YYYY'}}</td>
                     <td>{{details.tuition}}</td>

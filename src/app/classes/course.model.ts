@@ -6,7 +6,7 @@ export class Course {
     title!:string
     headContent!:string
     bodyContent!:string
-    numberOfMonths!: number
+    numberOfWeeks!: number
     tuition!: number
     note!: string
     discount!: number
